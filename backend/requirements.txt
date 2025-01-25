@@ -1,0 +1,8 @@
+flask
+flask-sqlalchemy
+flask-restful
+flask-wtf
+pyotp
+argon2-cffi
+zxcvbn-python
+flask-limiter
