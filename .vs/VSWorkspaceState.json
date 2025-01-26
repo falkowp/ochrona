@@ -2,8 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\app"
+    "\\backend\\app",
+    "\\frontend",
+    "\\frontend\\src",
+    "\\frontend\\src\\pages",
+    "\\frontend\\src\\styles"
   ],
-  "SelectedNode": "\\backend\\app\\models.py",
+  "SelectedNode": "\\backend\\app\\__init__.py",
   "PreviewInSolutionExplorer": false
 }

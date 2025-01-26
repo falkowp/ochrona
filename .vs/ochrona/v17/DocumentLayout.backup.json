@@ -1,12 +1,105 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\AddMessage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\pages\\AddMessage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\Dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\pages\\Dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\routes.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\app\\routes.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\Dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\Dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddMessage.js",
+              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\AddMessage.js",
+              "RelativeDocumentMoniker": "frontend\\src\\pages\\AddMessage.js",
+              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\AddMessage.js",
+              "RelativeToolTip": "frontend\\src\\pages\\AddMessage.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-01-26T20:15:15.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "App.js",
+              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\App.js",
+              "RelativeDocumentMoniker": "frontend\\src\\App.js",
+              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\App.js",
+              "RelativeToolTip": "frontend\\src\\App.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-01-26T18:05:57.078Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "routes.py",
+              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\routes.py",
+              "RelativeDocumentMoniker": "backend\\app\\routes.py",
+              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\routes.py",
+              "RelativeToolTip": "backend\\app\\routes.py",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAAAEAAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-01-26T17:50:58.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dashboard.js",
+              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\Dashboard.js",
+              "RelativeDocumentMoniker": "frontend\\src\\pages\\Dashboard.js",
+              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\Dashboard.js",
+              "RelativeToolTip": "frontend\\src\\pages\\Dashboard.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-01-26T17:50:24.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\Dockerfile",
+              "RelativeDocumentMoniker": "frontend\\Dockerfile",
+              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\Dockerfile",
+              "RelativeToolTip": "frontend\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-26T17:50:16.098Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

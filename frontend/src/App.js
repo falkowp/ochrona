@@ -4,16 +4,17 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard'; 
+import AddMessage from './pages/AddMessage';
 
 function App() {
     return (
         <Router>
             <div className="App">
-                <h1>Welcome to the Login Page</h1>
                 <Routes>
                     <Route path="/" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/dashboard" element={<Dashboard />} />  
+                    <Route path="/addmsg" element={<AddMessage />} />  
                 </Routes>
             </div>
         </Router>

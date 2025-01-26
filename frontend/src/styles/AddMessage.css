@@ -1,0 +1,60 @@
+/* styles/AddMessage.css */
+
+/* Kontener formularza */
+.add-message-container {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+}
+
+/* Formularz */
+.add-message-form {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+    /* Pola formularza */
+    .add-message-form textarea,
+    .add-message-form input {
+        width: 100%;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+
+/* Licznik znaków */
+.char-counter {
+    font-size: 0.875rem;
+    color: #6b7280; /* Domyœlnie szary */
+    margin-top: 0.25rem;
+    text-align: right;
+}
+
+    /* Zmiana koloru licznika, jeœli przekroczono limit */
+    .char-counter.text-red {
+        color: #ef4444; /* Czerwony */
+    }
+
+/* Przycisk formularza */
+.add-message-form button {
+    background-color: #1d4ed8;
+    color: white;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+    .add-message-form button:hover {
+        background-color: #2563eb;
+    }
