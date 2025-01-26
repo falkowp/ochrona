@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";  // Importujemy useNavigate
 
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState(""); // Stan na przechowywanie b³êdu
+    const [error, setError] = useState("");
+    const navigate = useNavigate();  // Hook do przekierowywania po udanym logowaniu
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Prosta walidacja (sprawdzenie, czy dane nie s¹ puste)
         if (!username || !password) {
             setError("Both username and password are required!");
             return;
@@ -17,24 +18,21 @@ function Login() {
         try {
             const response = await fetch("http://localhost/api/login", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),
             });
 
             const data = await response.json();
 
             if (!response.ok) {
-                // Je¿eli odpowiedŸ backendu jest b³êdna
                 setError(data.message || "An error occurred during login!");
             } else {
-                // Przechodzimy dalej, jeœli logowanie by³o udane
-                setError(""); // Resetujemy b³¹d
+                setError("");
                 console.log("Login successful", data);
+                // Po udanym logowaniu przekierowujemy na Dashboard
+                navigate("/dashboard");
             }
         } catch (error) {
-            // W przypadku problemu z po³¹czeniem z backendem
             setError("Failed to connect to the server");
         }
     };
@@ -61,9 +59,12 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                {error && <div style={{ color: "red" }}>{error}</div>} {/* Pokazujemy b³¹d */}
+                {error && <div style={{ color: "red" }}>{error}</div>}
                 <button type="submit">Login</button>
             </form>
+            <p>
+                Don't have an account? <Link to="/register">Register here</Link>
+            </p>
         </div>
     );
 }

@@ -1,13 +1,22 @@
 import React from 'react';
 import './App.css';
-import Login from './Login';  // Zaimportuj Login.js
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './Login';
+import Register from './Register';
+import Dashboard from './Dashboard'; 
 
 function App() {
     return (
-        <div className="App">
-            <h1>Welcome to the Login Page</h1>
-            <Login /> {/* Wywo³aj komponent Login */}
-        </div>
+        <Router>
+            <div className="App">
+                <h1>Welcome to the Login Page</h1>
+                <Routes>
+                    <Route path="/" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/dashboard" element={<Dashboard />} />  
+                </Routes>
+            </div>
+        </Router>
     );
 }
 
