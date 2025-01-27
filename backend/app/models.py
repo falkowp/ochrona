@@ -15,6 +15,7 @@ class Message(db.Model):
     message = db.Column(db.Text, nullable=False)
     author = db.Column(db.String(80), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.utcnow)
 
     def __repr__(self):
         return f'<Message {self.message[:20]}...>'

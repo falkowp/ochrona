@@ -82,10 +82,17 @@ def login():
 def get_messages(decoded):
     messages = Message.query.all()
     messages_list = [
-        {"id": msg.id, "message": msg.message, "author": msg.author, "created_at": msg.created_at.strftime('%Y-%m-%d %H:%M:%S')}
+        {
+            "id": msg.id,
+            "message": msg.message,
+            "author": msg.author,
+            "created_at": msg.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+            "updated_at": msg.updated_at.strftime('%Y-%m-%d %H:%M:%S') if msg.updated_at else None
+        }
         for msg in messages
     ]
     return jsonify({"messages": messages_list}), 200
+
 
 # Dodawanie wiadomoœci
 @main.route('/messages', methods=['POST'])
@@ -139,7 +146,9 @@ def edit_message(decoded, message_id):
         return jsonify({"message": "Unauthorized! You can only edit your own messages."}), 403
 
     message.message = new_message
+    message.updated_at = datetime.datetime.utcnow()  # Aktualizacja czasu edycji
     db.session.commit()
     return jsonify({"message": "Message updated successfully!"}), 200
+
 
 
