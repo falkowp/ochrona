@@ -5,6 +5,7 @@ import "../styles/Login.css";
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [otp, setOtp] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
@@ -18,8 +19,9 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!username || !password) {
-            setError("Both username and password are required!");
+        // Walidacja pól
+        if (!username.trim() || !password || !otp) {
+            setError("All fields are required!");
             return;
         }
 
@@ -27,7 +29,7 @@ function Login() {
             const response = await fetch("http://localhost/api/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username, password }),
+                body: JSON.stringify({ username, password, otp }),
             });
 
             const data = await response.json();
@@ -45,7 +47,7 @@ function Login() {
     };
 
     return (
-        <div>
+        <div className="login-container">
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -64,6 +66,15 @@ function Login() {
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="otp">OTP:</label>
+                    <input
+                        type="text"
+                        id="otp"
+                        value={otp}
+                        onChange={(e) => setOtp(e.target.value)}
                     />
                 </div>
                 {error && <div style={{ color: "red" }}>{error}</div>}

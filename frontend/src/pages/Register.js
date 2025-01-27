@@ -6,6 +6,7 @@ function Register() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);
+    const [qrCode, setQrCode] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,14 +27,15 @@ function Register() {
                 body: JSON.stringify({ username, password }),
             });
 
-            const data = await response.json();
-
-            if (!response.ok) {
-                setError(data.message || "An error occurred during registration!");
-            } else {
-                setError("");
+            if (response.ok) {
+                const blob = await response.blob();
+                const qrCodeUrl = URL.createObjectURL(blob);
+                setQrCode(qrCodeUrl);
                 setSuccess(true);
-                console.log("Registration successful", data);
+                setError("");
+            } else {
+                const data = await response.json();
+                setError(data.message || "An error occurred during registration!");
             }
         } catch (error) {
             setError("Failed to connect to the server");
@@ -72,9 +74,19 @@ function Register() {
                     />
                 </div>
                 {error && <div style={{ color: "red" }}>{error}</div>}
-                {success && <div style={{ color: "green" }}>Registration successful!</div>}
+                {success && (
+                    <div style={{ color: "green" }}>
+                        Registration successful! Scan the QR code to set up OTP.
+                    </div>
+                )}
                 <button type="submit">Register</button>
             </form>
+            {qrCode && (
+                <div>
+                    <h3>Scan this QR code with your OTP app:</h3>
+                    <img src={qrCode} alt="QR Code" />
+                </div>
+            )}
         </div>
     );
 }

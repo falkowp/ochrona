@@ -10,6 +10,6 @@
     "\\frontend\\src\\styles",
     "\\nginx"
   ],
-  "SelectedNode": "\\backend\\app\\models.py",
+  "SelectedNode": "\\backend\\app\\routes.py",
   "PreviewInSolutionExplorer": false
 }

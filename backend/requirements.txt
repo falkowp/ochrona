@@ -8,3 +8,5 @@ zxcvbn-python
 flask-limiter
 pyjwt
 flask-cors
+qrcode
+Pillow

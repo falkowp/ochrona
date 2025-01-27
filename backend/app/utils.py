@@ -11,10 +11,8 @@ def validate_password(password):
     return result['score'] >= 3  # Wymagana si³a has³a
 
 def generate_otp_secret():
-    totp = pyotp.TOTP(pyotp.random_base32())
-    secret = totp.secret
-    return secret
+    return pyotp.random_base32()
 
 def verify_otp(secret, otp):
     totp = pyotp.TOTP(secret)
-    return totp.verify(otp) 
+    return totp.verify(otp)

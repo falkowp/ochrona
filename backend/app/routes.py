@@ -1,15 +1,20 @@
 import jwt
 import datetime
-from flask import Blueprint, request, jsonify
+import io
+import pyotp
+import qrcode
+from flask import Blueprint, request, jsonify, send_file
 from functools import wraps
 from . import db
 from .models import User, Message
+from .utils import limiter, validate_password
 
-SECRET_KEY = "your_secret_key"  # U¿ywane do podpisywania JWT
+SECRET_KEY = "your_secret_key"
 
 main = Blueprint("main", __name__)
 
-# Dekorator do ochrony endpointów z weryfikacj¹ JWT
+
+# Middleware do wymaganego tokena JWT
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -30,10 +35,6 @@ def token_required(f):
         return f(decoded, *args, **kwargs)
     return decorated
 
-# Strona g³ówna
-@main.route('/')
-def index():
-    return {"message": "Welcome to the Secure Messaging App!"}
 
 # Rejestracja u¿ytkownika
 @main.route('/register', methods=['POST'])
@@ -45,36 +46,71 @@ def register():
     if not username or not password:
         return jsonify({"message": "Username and password are required!"}), 400
 
+    # Sprawdzenie czy u¿ytkownik istnieje
     if User.query.filter_by(username=username).first():
         return jsonify({"message": "User already exists!"}), 400
 
-    new_user = User(username=username, password=password)
+    # Walidacja has³a
+    if not validate_password(password):
+        return jsonify({"message": "Password is too weak!"}), 400
+
+    # Stworzenie nowego u¿ytkownika
+    new_user = User(username=username)
+    new_user.set_password(password)
+    new_user.generate_otp_secret()  # Generowanie sekretnika OTP
     db.session.add(new_user)
     db.session.commit()
-    return jsonify({"message": "User created successfully!"}), 201
+
+    # Generowanie kodu QR dla aplikacji uwierzytelniaj¹cej
+    totp = pyotp.TOTP(new_user.otp_secret)
+    otp_url = totp.provisioning_uri(username, issuer_name="TrelkaczApp")
+    qr = qrcode.make(otp_url)
+
+    buffer = io.BytesIO()
+    qr.save(buffer, format="PNG")
+    buffer.seek(0)
+
+    return send_file(buffer, mimetype="image/png",
+                     as_attachment=False,
+                     download_name="otp_qr.png")
+
 
 # Logowanie u¿ytkownika
 @main.route('/login', methods=['POST'])
+@limiter.limit("5 per minute")  # Limity zapytañ do logowania
 def login():
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
+    otp = data.get('otp')
 
+    # Znalezienie u¿ytkownika
     user = User.query.filter_by(username=username).first()
 
-    if user and user.password == password:
-        token = jwt.encode(
-            {
-                "user_id": user.id,
-                "username": user.username,
-                "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)
-            },
-            SECRET_KEY,
-            algorithm="HS256"
-        )
-        return jsonify({"token": token}), 200
-    else:
+    if not user or not user.verify_password(password):
         return jsonify({"message": "Invalid credentials!"}), 400
+
+    # Weryfikacja OTP z tolerancj¹ czasu
+    def verify_otp(secret, otp):
+        totp = pyotp.TOTP(secret)
+        # Sprawdzenie OTP z tolerancj¹ +/- 30 sekund (1 window)
+        return totp.verify(otp, valid_window=1)
+
+    if not verify_otp(user.otp_secret, otp):
+        return jsonify({"message": "Invalid OTP! Please check the code."}), 400
+
+    # Generowanie tokena JWT
+    token = jwt.encode(
+        {
+            "user_id": user.id,
+            "username": user.username,
+            "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)
+        },
+        SECRET_KEY,
+        algorithm="HS256"
+    )
+    return jsonify({"token": token}), 200
+
 
 # Pobieranie wiadomoœci
 @main.route('/messages', methods=['GET'])
@@ -94,7 +130,7 @@ def get_messages(decoded):
     return jsonify({"messages": messages_list}), 200
 
 
-# Dodawanie wiadomoœci
+# Tworzenie wiadomoœci
 @main.route('/messages', methods=['POST'])
 @token_required
 def create_message(decoded):
@@ -104,51 +140,44 @@ def create_message(decoded):
     if not message:
         return jsonify({"message": "Message is required!"}), 400
 
-    author = decoded['username']
-
-    new_message = Message(message=message, author=author)
+    new_message = Message(message=message, author=decoded['username'])
     db.session.add(new_message)
     db.session.commit()
     return jsonify({"message": "Message created successfully!"}), 201
+
+
+# Edycja wiadomoœci
+@main.route('/messages/<int:message_id>', methods=['PUT'])
+@token_required
+def update_message(decoded, message_id):
+    data = request.get_json()
+    new_content = data.get('message')
+
+    if not new_content:
+        return jsonify({"message": "New message content is required!"}), 400
+
+    message = Message.query.filter_by(id=message_id, author=decoded['username']).first()
+
+    if not message:
+        return jsonify({"message": "Message not found or not authorized!"}), 404
+
+    message.message = new_content
+    message.updated_at = datetime.datetime.utcnow()
+    db.session.commit()
+
+    return jsonify({"message": "Message updated successfully!"}), 200
+
 
 # Usuwanie wiadomoœci
 @main.route('/messages/<int:message_id>', methods=['DELETE'])
 @token_required
 def delete_message(decoded, message_id):
-    message = Message.query.get(message_id)
-    
-    if not message:
-        return jsonify({"message": "Message not found!"}), 404
+    message = Message.query.filter_by(id=message_id, author=decoded['username']).first()
 
-    if message.author != decoded['username']:
-        return jsonify({"message": "Unauthorized! You can only delete your own messages."}), 403
+    if not message:
+        return jsonify({"message": "Message not found or not authorized!"}), 404
 
     db.session.delete(message)
     db.session.commit()
+
     return jsonify({"message": "Message deleted successfully!"}), 200
-
-# Edytowanie wiadomoœci
-@main.route('/messages/<int:message_id>', methods=['PUT'])
-@token_required
-def edit_message(decoded, message_id):
-    data = request.get_json()
-    new_message = data.get('message')
-
-    if not new_message:
-        return jsonify({"message": "Message content is required!"}), 400
-
-    message = Message.query.get(message_id)
-
-    if not message:
-        return jsonify({"message": "Message not found!"}), 404
-
-    if message.author != decoded['username']:
-        return jsonify({"message": "Unauthorized! You can only edit your own messages."}), 403
-
-    message.message = new_message
-    message.updated_at = datetime.datetime.utcnow()  # Aktualizacja czasu edycji
-    db.session.commit()
-    return jsonify({"message": "Message updated successfully!"}), 200
-
-
-
