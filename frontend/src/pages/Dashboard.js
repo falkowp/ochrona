@@ -5,21 +5,19 @@ import "../styles/Dashboard.css";
 
 function Dashboard() {
     const [messages, setMessages] = useState([]);
-    const [username, setUsername] = useState(""); // Dodano stan na username
+    const [username, setUsername] = useState("");
     const navigate = useNavigate();
     const token = localStorage.getItem("jwtToken");
 
+    // Pobranie nazwy u¿ytkownika z tokena JWT
     useEffect(() => {
         if (!token) {
             navigate("/login");
             return;
         }
 
-        // Dekodowanie tokena JWT w celu pobrania nazwy u¿ytkownika
         try {
-            const payload = JSON.parse(
-                atob(token.split(".")[1]) // Rozdzielamy token na czêœci i dekodujemy Base64
-            );
+            const payload = JSON.parse(atob(token.split(".")[1])); // Rozdzielamy token na czêœci i dekodujemy Base64
             setUsername(payload.username);
         } catch (error) {
             console.error("Invalid token:", error);
@@ -27,6 +25,7 @@ function Dashboard() {
         }
     }, [navigate, token]);
 
+    // Pobranie wiadomoœci z API
     useEffect(() => {
         if (!token) return;
 
@@ -42,9 +41,58 @@ function Dashboard() {
             .catch((error) => console.error("Error fetching messages:", error));
     }, [token]);
 
+    // Wylogowanie u¿ytkownika
     const handleLogout = () => {
         localStorage.removeItem("jwtToken");
         navigate("/login");
+    };
+
+    // Edycja wiadomoœci
+    const editMessage = (id, newMessage) => {
+        fetch(`/api/messages/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ message: newMessage }),
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to edit the message.");
+                }
+                return response.json();
+            })
+            .then(() => {
+                setMessages((prevMessages) =>
+                    prevMessages.map((msg) =>
+                        msg.id === id ? { ...msg, message: newMessage } : msg
+                    )
+                );
+            })
+            .catch((error) => console.error(error));
+    };
+
+    // Usuniêcie wiadomoœci
+    const deleteMessage = (id) => {
+        fetch(`/api/messages/${id}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to delete the message.");
+                }
+                return response.json();
+            })
+            .then(() => {
+                setMessages((prevMessages) =>
+                    prevMessages.filter((msg) => msg.id !== id)
+                );
+            })
+            .catch((error) => console.error(error));
     };
 
     return (
@@ -67,10 +115,34 @@ function Dashboard() {
             ) : (
                 messages.map((msg) => (
                     <div key={msg.id} className="message-container">
+                        <p className="message-date">Posted on: {msg.created_at}</p>
                         <div className="message-text">
                             <ReactMarkdown>{msg.message}</ReactMarkdown>
                         </div>
-                        <p className="message-author">— {msg.author}</p>
+                        <p className="message-author">
+                            ~{msg.author} {msg.author === username && "(you)"}
+                        </p>
+                        {msg.author === username && (
+                            <div className="message-actions">
+                                <button
+                                    className="edit-button"
+                                    onClick={() => {
+                                        const newMessage = prompt("Edit your message:", msg.message);
+                                        if (newMessage) {
+                                            editMessage(msg.id, newMessage);
+                                        }
+                                    }}
+                                >
+                                    Edit
+                                </button>
+                                <button
+                                    className="delete-button"
+                                    onClick={() => deleteMessage(msg.id)}
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        )}
                     </div>
                 ))
             )}

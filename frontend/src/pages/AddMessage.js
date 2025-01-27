@@ -56,7 +56,7 @@ function AddMessage() {
         <div className="add-message-container">
             <form onSubmit={handleSubmit} className="add-message-form">
                 <div>
-                    <label>Message:</label>
+                    <label>New post:</label>
                     <textarea
                         value={newMessage}
                         onChange={(e) => setNewMessage(e.target.value)}

@@ -1,103 +1,85 @@
+/* AddMessage.css */
+
 /* Kontener g³ówny */
 .add-message-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 25px;
-    max-width: 600px;
-    margin: 50px auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+    padding: 20px;
 }
-
-    .add-message-container:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    }
 
 /* Formularz */
 .add-message-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
     width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+    /* Etykiety */
     .add-message-form label {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
-        color: #444;
-        margin-bottom: 5px;
-        letter-spacing: 0.5px;
+        color: #333;
+        margin-bottom: 10px;
+        display: block;
     }
 
+    /* Pole tekstowe */
     .add-message-form textarea {
-        width: 100%;
-        height: 120px;
-        padding: 12px;
-        font-size: 16px;
-        border: 2px solid #ddd;
-        border-radius: 10px;
+        width: 90%;
+        height: 150px; 
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
         resize: none;
-        outline: none;
-        background-color: #f9f9f9;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s;
     }
 
         .add-message-form textarea:focus {
-            border-color: #3b82f6;
-            background-color: #eef6ff;
-            box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+            outline: none;
+            border-color: #007bff;
         }
 
 /* Licznik znaków */
 .char-counter {
-    text-align: right;
     font-size: 14px;
-    color: #666;
-    font-weight: 500;
     margin-top: 5px;
+    text-align: right;
+    color: #666;
 }
 
     .char-counter.text-red {
-        color: #dc2626;
-        font-weight: bold;
+        color: #d9534f;
     }
 
-/* Przycisk dodawania wiadomoœci */
+/* Przycisk */
 .add-message-form button {
-    padding: 12px 20px;
-    font-size: 18px;
-    font-weight: bold;
+    display: block;
+    width: 100%;
+    background-color: #007bff;
     color: #ffffff;
-    background-color: #16a34a;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+    transition: background-color 0.3s;
 }
 
     .add-message-form button:hover {
-        background-color: #15803d;
-        transform: scale(1.05);
+        background-color: #0056b3;
     }
 
     .add-message-form button:active {
-        background-color: #166534;
-        transform: scale(1);
+        background-color: #003f7f;
     }
-
-    .add-message-form button:disabled {
-        background-color: #a3a3a3;
-        cursor: not-allowed;
-    }
-
-/* Efekt focus i interakcje */
-.add-message-form textarea:disabled {
-    background-color: #f3f3f3;
-    border-color: #e5e5e5;
-}
-

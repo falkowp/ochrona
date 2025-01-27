@@ -82,7 +82,7 @@ def login():
 def get_messages(decoded):
     messages = Message.query.all()
     messages_list = [
-        {"id": msg.id, "message": msg.message, "author": msg.author}
+        {"id": msg.id, "message": msg.message, "author": msg.author, "created_at": msg.created_at.strftime('%Y-%m-%d %H:%M:%S')}
         for msg in messages
     ]
     return jsonify({"messages": messages_list}), 200
@@ -103,3 +103,43 @@ def create_message(decoded):
     db.session.add(new_message)
     db.session.commit()
     return jsonify({"message": "Message created successfully!"}), 201
+
+# Usuwanie wiadomoœci
+@main.route('/messages/<int:message_id>', methods=['DELETE'])
+@token_required
+def delete_message(decoded, message_id):
+    message = Message.query.get(message_id)
+    
+    if not message:
+        return jsonify({"message": "Message not found!"}), 404
+
+    if message.author != decoded['username']:
+        return jsonify({"message": "Unauthorized! You can only delete your own messages."}), 403
+
+    db.session.delete(message)
+    db.session.commit()
+    return jsonify({"message": "Message deleted successfully!"}), 200
+
+# Edytowanie wiadomoœci
+@main.route('/messages/<int:message_id>', methods=['PUT'])
+@token_required
+def edit_message(decoded, message_id):
+    data = request.get_json()
+    new_message = data.get('message')
+
+    if not new_message:
+        return jsonify({"message": "Message content is required!"}), 400
+
+    message = Message.query.get(message_id)
+
+    if not message:
+        return jsonify({"message": "Message not found!"}), 404
+
+    if message.author != decoded['username']:
+        return jsonify({"message": "Unauthorized! You can only edit your own messages."}), 403
+
+    message.message = new_message
+    db.session.commit()
+    return jsonify({"message": "Message updated successfully!"}), 200
+
+

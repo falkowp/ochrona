@@ -10,6 +10,6 @@
     "\\frontend\\src\\styles",
     "\\nginx"
   ],
-  "SelectedNode": "\\frontend\\src\\styles\\AddMessage.css",
+  "SelectedNode": "\\backend\\app\\routes.py",
   "PreviewInSolutionExplorer": false
 }

@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\styles\\AddMessage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\styles\\AddMessage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\styles\\Dashboard.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\styles\\Dashboard.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\Dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\pages\\Dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\routes.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\app\\routes.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\models.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\app\\models.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\AddMessage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -27,38 +35,64 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AddMessage.css",
-              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\styles\\AddMessage.css",
-              "RelativeDocumentMoniker": "frontend\\src\\styles\\AddMessage.css",
-              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\styles\\AddMessage.css",
-              "RelativeToolTip": "frontend\\src\\styles\\AddMessage.css",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAAAGYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-01-27T11:14:36.006Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Dashboard.css",
               "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\styles\\Dashboard.css",
               "RelativeDocumentMoniker": "frontend\\src\\styles\\Dashboard.css",
               "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\styles\\Dashboard.css",
               "RelativeToolTip": "frontend\\src\\styles\\Dashboard.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAswIkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-01-27T11:14:34.544Z",
+              "WhenOpened": "2025-01-27T12:54:02.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "models.py",
+              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\models.py",
+              "RelativeDocumentMoniker": "backend\\app\\models.py",
+              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\models.py",
+              "RelativeToolTip": "backend\\app\\models.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-01-27T12:50:35.949Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "routes.py",
+              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\routes.py",
+              "RelativeDocumentMoniker": "backend\\app\\routes.py",
+              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\routes.py",
+              "RelativeToolTip": "backend\\app\\routes.py",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAAwI8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-01-27T12:49:57.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Dashboard.js",
+              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\Dashboard.js",
+              "RelativeDocumentMoniker": "frontend\\src\\pages\\Dashboard.js",
+              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\Dashboard.js",
+              "RelativeToolTip": "frontend\\src\\pages\\Dashboard.js",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAAwJkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-01-27T12:34:37.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "AddMessage.js",
               "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\AddMessage.js",
               "RelativeDocumentMoniker": "frontend\\src\\pages\\AddMessage.js",
               "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\AddMessage.js",
               "RelativeToolTip": "frontend\\src\\pages\\AddMessage.js",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAQwEIAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAADcAAAAAAAAAAAAAwE0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-01-27T11:09:12.869Z",
               "EditorCaption": ""
