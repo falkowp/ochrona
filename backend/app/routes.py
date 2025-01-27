@@ -97,7 +97,7 @@ def login():
         return totp.verify(otp, valid_window=1)
 
     if not verify_otp(user.otp_secret, otp):
-        return jsonify({"message": "Invalid OTP! Please check the code."}), 400
+        return jsonify({"message": "Invalid code! Please check the code in app and try again."}), 400
 
     # Generowanie tokena JWT
     token = jwt.encode(
