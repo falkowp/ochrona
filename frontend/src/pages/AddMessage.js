@@ -1,20 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/AddMessage.css"; // Importujemy plik CSS
+import "../styles/AddMessage.css";
 
 function AddMessage() {
     const [newMessage, setNewMessage] = useState("");
     const [author, setAuthor] = useState("");
     const navigate = useNavigate();
+    const MAX_CHAR_LIMIT = 200;
 
-    const MAX_CHAR_LIMIT = 200; // Limit znaków dla wiadomoœci
+    useEffect(() => {
+        const token = localStorage.getItem("jwtToken");
+        if (!token) {
+            navigate("/login");
+        } else {
+            // Mo¿na tutaj wys³aæ zapytanie do serwera, aby uzyskaæ dane u¿ytkownika
+            setAuthor("User"); // Ustawianie autora
+        }
+    }, [navigate]);
 
-    // Obs³uguje wysy³anie wiadomoœci
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!newMessage || !author) {
-            alert("Please fill out both the message and author fields.");
+        if (!newMessage) {
+            alert("Please write a message.");
             return;
         }
 
@@ -23,10 +31,13 @@ function AddMessage() {
             return;
         }
 
+        const token = localStorage.getItem("jwtToken");
+
         fetch("/api/messages", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({ message: newMessage, author }),
         })
@@ -51,24 +62,11 @@ function AddMessage() {
                         onChange={(e) => setNewMessage(e.target.value)}
                         rows="4"
                         placeholder="Write your message here..."
-                        maxLength={MAX_CHAR_LIMIT + 1} // Opcjonalnie ograniczamy wprowadzanie znaków
+                        maxLength={MAX_CHAR_LIMIT + 1}
                     />
-                    {/* Licznik znaków */}
-                    <div
-                        className={`char-counter ${newMessage.length > MAX_CHAR_LIMIT ? "text-red" : ""
-                            }`}
-                    >
+                    <div className={`char-counter ${newMessage.length > MAX_CHAR_LIMIT ? "text-red" : ""}`}>
                         {newMessage.length}/{MAX_CHAR_LIMIT}
                     </div>
-                </div>
-                <div>
-                    <label>Author:</label>
-                    <input
-                        type="text"
-                        value={author}
-                        onChange={(e) => setAuthor(e.target.value)}
-                        placeholder="Your name"
-                    />
                 </div>
                 <button type="submit">Add Message</button>
             </form>

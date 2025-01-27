@@ -6,3 +6,5 @@ pyotp
 argon2-cffi
 zxcvbn-python
 flask-limiter
+pyjwt
+flask-cors

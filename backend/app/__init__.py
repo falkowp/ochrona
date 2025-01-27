@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 db = SQLAlchemy()
 
@@ -7,15 +8,16 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'  
-    app.config['SECRET_KEY'] = 'mysecretkey'  
+    app.config['SECRET_KEY'] = 'mysecretkey' 
+    CORS(app, supports_credentials=True)
 
     db.init_app(app)
 
     with app.app_context():
-        from .models import User  
+        from .models import User
         db.create_all()  
 
-    from .routes import main  
+    from .routes import main 
     app.register_blueprint(main)
 
     return app

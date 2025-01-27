@@ -3,11 +3,13 @@
     "",
     "\\backend",
     "\\backend\\app",
+    "\\backend\\instance",
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\pages",
-    "\\frontend\\src\\styles"
+    "\\frontend\\src\\styles",
+    "\\nginx"
   ],
-  "SelectedNode": "\\backend\\app\\__init__.py",
+  "SelectedNode": "\\frontend\\src\\styles\\AddMessage.css",
   "PreviewInSolutionExplorer": false
 }

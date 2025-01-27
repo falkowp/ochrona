@@ -1,87 +1,86 @@
-/* Dashboard.css */
-
-/* Styl dla ca³ego kontenera dashboardu */
+/* Container g³ówny */
 .dashboard-container {
-    padding: 2rem;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
     background-color: #f9f9f9;
-    min-height: 100vh;
-    font-family: 'Arial', sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Styl na przycisk "Add a New Message" */
-.add-message-button {
-    background-color: #1d4ed8; /* niebieski */
-    color: white;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    text-align: center;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-}
-
-    .add-message-button:hover {
-        background-color: #2563eb; /* jaœniejszy niebieski po najechaniu */
-    }
-
-/* Styl dla komunikatów, gdy brak wiadomoœci */
-.no-messages {
-    font-size: 1.2rem;
-    color: #4b5563;
-}
-
-/* Styl dla ka¿dej wiadomoœci */
-.message-container {
-    background-color: white;
-    border-radius: 8px;
-    padding: 16px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 16px;
-    transition: box-shadow 0.3s ease;
-}
-
-    .message-container:hover {
-        box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.1);
-    }
-
-/* Styl dla tekstu wiadomoœci */
-.message-text {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-/* Styl dla autora wiadomoœci */
-.message-author {
-    font-size: 0.875rem;
-    color: #6b7280; /* szary */
-    text-align: right;
-}
-
-/* Styl dla tytu³owej sekcji */
+/* Nag³ówek */
 .dashboard-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid #e5e7eb; /* jasny szary */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
 }
 
-    .dashboard-header h1 {
-        font-size: 2rem;
-        color: #111827; /* ciemny kolor */
-        font-weight: bold;
+.user-profile h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.logout-button {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #d9534f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .logout-button:hover {
+        background-color: #c9302c;
     }
 
-/* Styl dla linku do profilu */
-.profile-link {
-    color: #1d4ed8; /* niebieski */
+/* Link do dodawania wiadomoœci */
+.add-message-button {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #5bc0de;
     text-decoration: none;
-    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-    .profile-link:hover {
-        text-decoration: underline;
+    .add-message-button:hover {
+        background-color: #31b0d5;
     }
+
+/* Kontener wiadomoœci */
+.message-container {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message-text {
+    font-size: 16px;
+    color: #333;
+}
+
+.message-author {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #888;
+    text-align: right;
+}
+
+/* Brak wiadomoœci */
+.no-messages {
+    font-size: 16px;
+    color: #999;
+    text-align: center;
+}

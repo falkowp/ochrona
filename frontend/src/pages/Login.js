@@ -1,11 +1,19 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";  // Importujemy useNavigate
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/Login.css";
 
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const navigate = useNavigate();  // Hook do przekierowywania po udanym logowaniu
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem("jwtToken");
+        if (token) {
+            navigate("/dashboard"); // Automatyczne przekierowanie, jeœli zalogowany
+        }
+    }, [navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,9 +35,8 @@ function Login() {
             if (!response.ok) {
                 setError(data.message || "An error occurred during login!");
             } else {
+                localStorage.setItem("jwtToken", data.token);
                 setError("");
-                console.log("Login successful", data);
-                // Po udanym logowaniu przekierowujemy na Dashboard
                 navigate("/dashboard");
             }
         } catch (error) {
