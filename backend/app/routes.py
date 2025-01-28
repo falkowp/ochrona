@@ -35,6 +35,9 @@ def token_required(f):
         return f(decoded, *args, **kwargs)
     return decorated
 
+@main.route('/', methods=['GET'])
+def test():
+    return jsonify({"message": "works!"})
 
 # Rejestracja u¿ytkownika
 @main.route('/register', methods=['POST'])

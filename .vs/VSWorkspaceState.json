@@ -4,11 +4,11 @@
     "\\backend",
     "\\backend\\app",
     "\\backend\\instance",
-    "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\pages",
     "\\frontend\\src\\styles",
-    "\\nginx"
+    "\\nginx",
+    "\\nginx\\certs"
   ],
   "SelectedNode": "\\backend\\app\\routes.py",
   "PreviewInSolutionExplorer": false
