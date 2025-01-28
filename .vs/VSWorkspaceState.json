@@ -6,9 +6,10 @@
     "\\backend\\instance",
     "\\frontend",
     "\\frontend\\src",
+    "\\frontend\\src\\pages",
     "\\frontend\\src\\styles",
     "\\nginx"
   ],
-  "SelectedNode": "\\frontend\\src\\styles\\Register.css",
+  "SelectedNode": "\\backend\\app\\routes.py",
   "PreviewInSolutionExplorer": false
 }

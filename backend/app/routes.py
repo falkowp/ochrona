@@ -76,30 +76,36 @@ def register():
 
 
 # Logowanie u¿ytkownika
-@main.route('/login', methods=['POST'])
-@limiter.limit("5 per minute")  # Limity zapytañ do logowania
-def login():
+@main.route('/login_step1', methods=['POST'])
+@limiter.limit("5 per minute")
+def login_step1():
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
-    otp = data.get('otp')
 
-    # Znalezienie u¿ytkownika
     user = User.query.filter_by(username=username).first()
 
     if not user or not user.verify_password(password):
         return jsonify({"message": "Invalid credentials!"}), 400
 
-    # Weryfikacja OTP z tolerancj¹ czasu
-    def verify_otp(secret, otp):
-        totp = pyotp.TOTP(secret)
-        # Sprawdzenie OTP z tolerancj¹ +/- 30 sekund (1 window)
-        return totp.verify(otp, valid_window=1)
+    return jsonify({"message": "Credentials valid. Proceed to OTP verification."}), 200
 
-    if not verify_otp(user.otp_secret, otp):
-        return jsonify({"message": "Invalid code! Please check the code in app and try again."}), 400
+def verify_otp(secret, otp):
+    totp = pyotp.TOTP(secret)
+    return totp.verify(otp, valid_window=1)
 
-    # Generowanie tokena JWT
+@main.route('/login_step2', methods=['POST'])
+@limiter.limit("5 per minute")
+def login_step2():
+    data = request.get_json()
+    username = data.get('username')
+    otp = data.get('otp')
+
+    user = User.query.filter_by(username=username).first()
+
+    if not user or not verify_otp(user.otp_secret, otp):
+        return jsonify({"message": "Invalid OTP!"}), 400
+
     token = jwt.encode(
         {
             "user_id": user.id,
@@ -110,6 +116,7 @@ def login():
         algorithm="HS256"
     )
     return jsonify({"token": token}), 200
+
 
 
 # Pobieranie wiadomoœci

@@ -19,6 +19,7 @@ form {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
     /* Pola formularza */
@@ -35,7 +36,8 @@ label {
 
 input[type="text"],
 input[type="password"] {
-    width: calc(100% - 20px);
+    width: 100%;
+    box-sizing: border-box;
     padding: 8px 10px;
     font-size: 14px;
     border: 1px solid #ccc;
@@ -58,7 +60,7 @@ div[style*="color: red"] {
 
 /* Przycisk logowania */
 button[type="submit"] {
-    width: 100%;
+    width: calc(50% - 5px);
     padding: 10px;
     font-size: 16px;
     color: #fff;
@@ -67,10 +69,28 @@ button[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-right: 10px; /* Dodany odstêp miêdzy przyciskami */
 }
 
     button[type="submit"]:hover {
         background-color: #4cae4c;
+    }
+
+/* Przycisk "Cancel" */
+.cancel-button {
+    width: calc(50% - 5px);
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+    .cancel-button:hover {
+        background-color: darkgray;
     }
 
 /* Rejestracja */
