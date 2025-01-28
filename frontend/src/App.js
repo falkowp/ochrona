@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import AddMessage from "./pages/AddMessage";
 import PrivateRoute from "./components/PrivateRoute";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
                     {/* Trasy chronione */}
                     <Route path="/dashboard" element={<PrivateRoute element={Dashboard} />} />
                     <Route path="/addmsg" element={<PrivateRoute element={AddMessage} />} />
+                    <Route path="/profile" element={<PrivateRoute element={UserProfile} />} />
                 </Routes>
             </div>
         </Router>

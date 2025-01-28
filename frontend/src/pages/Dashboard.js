@@ -117,7 +117,9 @@ function Dashboard() {
 
             <div className="dashboard-header">
                 <div className="user-profile">
-                    <h1>Hello, {username}!</h1>
+                    <h1>
+                        Hello, <Link to="/profile">{username}</Link>!
+                    </h1>
                 </div>
                 <button className="logout-button" onClick={handleLogout}>
                     Log out

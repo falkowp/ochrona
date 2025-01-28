@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\nginx\\default.conf||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:nginx\\default.conf||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\UserProfile.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\pages\\UserProfile.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\routes.py||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\app\\routes.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\nginx\\Dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:nginx\\Dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\utils.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\app\\utils.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -30,71 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "utils.py",
+              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\utils.py",
+              "RelativeDocumentMoniker": "backend\\app\\utils.py",
+              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\utils.py",
+              "RelativeToolTip": "backend\\app\\utils.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-01-28T18:26:25.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserProfile.js",
+              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\UserProfile.js",
+              "RelativeDocumentMoniker": "frontend\\src\\pages\\UserProfile.js",
+              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\UserProfile.js",
+              "RelativeToolTip": "frontend\\src\\pages\\UserProfile.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-01-28T18:12:53.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "routes.py",
               "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\routes.py",
               "RelativeDocumentMoniker": "backend\\app\\routes.py",
               "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\routes.py",
               "RelativeToolTip": "backend\\app\\routes.py",
-              "ViewState": "AgIAAKEAAAAAAAAAAAAswMEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAOgAAAAAAAAAAAAIwAABAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
               "WhenOpened": "2025-01-28T14:13:58.373Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "docker-compose.yml",
-              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\docker-compose.yml",
-              "RelativeDocumentMoniker": "docker-compose.yml",
-              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\docker-compose.yml",
-              "RelativeToolTip": "docker-compose.yml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2025-01-28T14:13:18.714Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "default.conf",
-              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\nginx\\default.conf",
-              "RelativeDocumentMoniker": "nginx\\default.conf",
-              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\nginx\\default.conf",
-              "RelativeToolTip": "nginx\\default.conf",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-01-28T13:32:06.102Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "__init__.py",
               "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\__init__.py",
               "RelativeDocumentMoniker": "backend\\app\\__init__.py",
               "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\backend\\app\\__init__.py",
               "RelativeToolTip": "backend\\app\\__init__.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
               "WhenOpened": "2025-01-28T13:54:30.222Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Dockerfile",
-              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\nginx\\Dockerfile",
-              "RelativeDocumentMoniker": "nginx\\Dockerfile",
-              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\nginx\\Dockerfile",
-              "RelativeToolTip": "nginx\\Dockerfile",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-01-28T13:32:14.542Z",
               "EditorCaption": ""
             }
           ]

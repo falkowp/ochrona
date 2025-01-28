@@ -8,6 +8,8 @@ from functools import wraps
 from . import db
 from .models import User, Message
 from .utils import limiter, validate_password
+from pydantic import ValidationError
+from .utils import UserRegistrationModel
 
 SECRET_KEY = "your_secret_key"
 
@@ -43,8 +45,13 @@ def test():
 @main.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
-    username = data.get('username')
-    password = data.get('password')
+    try:
+        validated_data = UserRegistrationModel(**data)
+    except ValidationError as e:
+        return jsonify({"message": "Login or password does not meet requirements."}), 400
+
+    username = validated_data.username
+    password = validated_data.password
 
     if not username or not password:
         return jsonify({"message": "Username and password are required!"}), 400
@@ -89,7 +96,7 @@ def login_step1():
     user = User.query.filter_by(username=username).first()
 
     if not user or not user.verify_password(password):
-        return jsonify({"message": "Invalid credentials!"}), 400
+        return jsonify({"message": "Wrong login or password!"}), 400
 
     return jsonify({"message": "Credentials valid. Proceed to OTP verification."}), 200
 
@@ -119,6 +126,49 @@ def login_step2():
         algorithm="HS256"
     )
     return jsonify({"token": token}), 200
+
+@main.route('/change_password', methods=['POST'])
+@token_required  # Wymaga tokena JWT
+def change_password(decoded):
+    data = request.get_json()
+    current_password = data.get('current_password')
+    otp = data.get('otp')
+    new_password = data.get('new_password')
+
+    # Pobierz u¿ytkownika z bazy na podstawie tokena JWT
+    user = User.query.filter_by(id=decoded["user_id"]).first()
+
+    if not user:
+        return jsonify({"message": "User not found."}), 404
+
+    # Weryfikacja starego has³a
+    if not user.verify_password(current_password):
+        return jsonify({"message": "Incorrect current password."}), 400
+
+    # Weryfikacja OTP
+    if not verify_otp(user.otp_secret, otp):
+        return jsonify({"message": "Invalid OTP."}), 400
+
+    # Walidacja nowego has³a
+    password_issues = []
+    if len(new_password) < 8:
+        password_issues.append("Password must be at least 8 characters long.")
+    if not any(char.isdigit() for char in new_password):
+        password_issues.append("Password must include at least one number.")
+    if not any(char.isupper() for char in new_password):
+        password_issues.append("Password must include at least one uppercase letter.")
+    if not any(char.islower() for char in new_password):
+        password_issues.append("Password must include at least one lowercase letter.")
+
+    if password_issues:
+        return jsonify({"message": "New password does not meet security requirements.", "issues": password_issues}), 400
+
+    # Zmieñ has³o u¿ytkownika
+    user.set_password(new_password)
+    db.session.commit()
+
+    return jsonify({"message": "Password changed successfully."}), 200
+
 
 
 
@@ -191,3 +241,16 @@ def delete_message(decoded, message_id):
     db.session.commit()
 
     return jsonify({"message": "Message deleted successfully!"}), 200
+
+@main.errorhandler(429)
+def ratelimit_error(e):
+    return jsonify({
+        "message": "Too many requests! Try again later",
+        "description": str(e.description)
+    }), 429
+
+@main.route('/user/message_count', methods=['GET'])
+@token_required
+def get_message_count(decoded):
+    user_messages_count = Message.query.filter_by(author=decoded["username"]).count()
+    return jsonify({"messageCount": user_messages_count}), 200

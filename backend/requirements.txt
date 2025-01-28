@@ -10,3 +10,4 @@ pyjwt
 flask-cors
 qrcode
 Pillow
+pydantic
