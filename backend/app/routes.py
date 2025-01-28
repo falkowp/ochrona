@@ -10,6 +10,7 @@ from .models import User, Message
 from .utils import limiter, validate_password
 from pydantic import ValidationError
 from .utils import UserRegistrationModel
+import bleach
 
 SECRET_KEY = "your_secret_key"
 
@@ -190,42 +191,55 @@ def get_messages(decoded):
     return jsonify({"messages": messages_list}), 200
 
 
-# Tworzenie wiadomoœci
+def sanitize_input(data):
+    return bleach.clean(data)
+
+# Zastosowanie przy tworzeniu wiadomoœci:
 @main.route('/messages', methods=['POST'])
 @token_required
 def create_message(decoded):
     data = request.get_json()
-    message = data.get('message')
+    raw_message = data.get('message')
 
-    if not message:
+    if not raw_message:
         return jsonify({"message": "Message is required!"}), 400
 
-    new_message = Message(message=message, author=decoded['username'])
+    sanitized_message = sanitize_input(raw_message)
+
+    new_message = Message(message=sanitized_message, author=decoded['username'])
     db.session.add(new_message)
     db.session.commit()
     return jsonify({"message": "Message created successfully!"}), 201
+
 
 
 # Edycja wiadomoœci
 @main.route('/messages/<int:message_id>', methods=['PUT'])
 @token_required
 def update_message(decoded, message_id):
+    import bleach  # Importujemy w razie braku wczeœniejszego
     data = request.get_json()
     new_content = data.get('message')
 
     if not new_content:
         return jsonify({"message": "New message content is required!"}), 400
 
+    # Pobieramy wiadomoœæ przypisan¹ do u¿ytkownika
     message = Message.query.filter_by(id=message_id, author=decoded['username']).first()
 
     if not message:
         return jsonify({"message": "Message not found or not authorized!"}), 404
 
-    message.message = new_content
+    # Sanitization of new content
+    sanitized_content = bleach.clean(new_content)
+
+    # Aktualizacja treœci wiadomoœci
+    message.message = sanitized_content
     message.updated_at = datetime.datetime.utcnow()
     db.session.commit()
 
     return jsonify({"message": "Message updated successfully!"}), 200
+
 
 
 # Usuwanie wiadomoœci

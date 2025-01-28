@@ -208,6 +208,27 @@
         background-color: #c9302c;
     }
 
+    /* Zmiana obs³ugi obrazów i szerokoœci Markdown */
+.markdown-preview img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+.markdown-preview {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Dla tekstu wiadomoœci */
+.message-text, .message-container img {
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+
 /* Animacje */
 @keyframes fadeIn {
     from {

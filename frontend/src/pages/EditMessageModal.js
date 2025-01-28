@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../styles/App.css";
 
 function EditMessageModal({ isOpen, currentMessage, onSave, onClose }) {
     const [newMessage, setNewMessage] = useState("");

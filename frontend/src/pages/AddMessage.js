@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import RichTextEditor from "../components/RichTextEditor";
 import "../styles/AddMessage.css";
+import "../styles/App.css";
 
 function AddMessage() {
     const [newMessage, setNewMessage] = useState("");
@@ -13,15 +15,14 @@ function AddMessage() {
         if (!token) {
             navigate("/login");
         } else {
-            // Mo¿na tutaj wys³aæ zapytanie do serwera, aby uzyskaæ dane u¿ytkownika
-            setAuthor("User"); // Ustawianie autora
+            setAuthor("User");
         }
     }, [navigate]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!newMessage) {
+        if (!newMessage.trim()) {
             alert("Please write a message.");
             return;
         }
@@ -57,14 +58,17 @@ function AddMessage() {
             <form onSubmit={handleSubmit} className="add-message-form">
                 <div>
                     <label>New post:</label>
-                    <textarea
+
+                    <RichTextEditor
                         value={newMessage}
-                        onChange={(e) => setNewMessage(e.target.value)}
-                        rows="4"
-                        placeholder="Write your message here..."
-                        maxLength={MAX_CHAR_LIMIT + 1}
+                        onChange={setNewMessage}
+                        maxCharLimit={MAX_CHAR_LIMIT}
                     />
-                    <div className={`char-counter ${newMessage.length > MAX_CHAR_LIMIT ? "text-red" : ""}`}>
+
+                    <div
+                        className={`char-counter ${newMessage.length > MAX_CHAR_LIMIT ? "text-red" : ""
+                            }`}
+                    >
                         {newMessage.length}/{MAX_CHAR_LIMIT}
                     </div>
                 </div>

@@ -2,7 +2,6 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\app",
     "\\backend\\instance",
     "\\frontend",
     "\\frontend\\src",
@@ -11,6 +10,6 @@
     "\\nginx",
     "\\nginx\\certs"
   ],
-  "SelectedNode": "\\backend\\app\\routes.py",
+  "SelectedNode": "\\frontend\\src\\pages\\AddMessage.js",
   "PreviewInSolutionExplorer": false
 }

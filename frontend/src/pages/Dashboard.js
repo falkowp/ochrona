@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Dashboard.css";
 import EditMessageModal from "./EditMessageModal";
+import "../styles/App.css";
 
 function Dashboard() {
     const [messages, setMessages] = useState([]);
