@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { FaBold, FaItalic, FaImage, FaCode, FaListUl, FaListOl, FaQuoteRight } from "react-icons/fa";
+import { FaBold, FaItalic, FaImage} from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
 
 function RichTextEditor({ value, onChange, maxCharLimit }) {
@@ -45,18 +45,6 @@ function RichTextEditor({ value, onChange, maxCharLimit }) {
                 </button>
                 <button type="button" onClick={() => addFormatting("_")} className="toolbar-button">
                     <FaItalic title="Italic" />
-                </button>
-                <button type="button" onClick={() => addFormatting("`")} className="toolbar-button">
-                    <FaCode title="Inline Code" />
-                </button>
-                <button type="button" onClick={() => addFormatting("\n> ", "Quote")} className="toolbar-button">
-                    <FaQuoteRight title="Blockquote" />
-                </button>
-                <button type="button" onClick={() => addFormatting("\n- ", "List item")} className="toolbar-button">
-                    <FaListUl title="Unordered List" />
-                </button>
-                <button type="button" onClick={() => addFormatting("\n1. ", "List item")} className="toolbar-button">
-                    <FaListOl title="Ordered List" />
                 </button>
                 <button type="button" onClick={() => insertLinkOrImage("image")} className="toolbar-button">
                     <FaImage title="Insert Image" />

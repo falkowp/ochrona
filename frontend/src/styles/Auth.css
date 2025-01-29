@@ -1,37 +1,51 @@
-/* Ogólne stylowanie */
+/* Resetowanie domyœlnych styli */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* Jasnoszare t³o */
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
 }
 
+/* Nag³ówki */
 h2 {
     text-align: center;
     color: #333;
-    margin: 20px 0; /* Odstêp od góry */
+    margin: 20px 0;
+}
+
+/* Kontener logowania i rejestracji */
+.login-container,
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Wyœrodkowanie elementów */
+    justify-content: center;
+    min-height: 100vh; /* Pe³na wysokoœæ ekranu */
+    text-align: center;
 }
 
 /* Formularze */
 form {
     max-width: 400px;
-    margin: 20px auto; /* Wyœrodkowanie formularza */
+    width: 100%;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lekki cieñ */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }
 
+/* Etykiety */
 label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #555; /* Ciemniejszy tekst */
+    color: #555;
 }
 
+/* Pola input */
 input {
-    width: 90%; /* Rozci¹ga pole na pe³n¹ szerokoœæ formularza */
+    width: 95%;
     padding: 10px;
     margin-bottom: 16px;
     font-size: 14px;
@@ -39,16 +53,18 @@ input {
     border-radius: 5px;
     outline: none;
     transition: border-color 0.3s;
+    margin: 10px auto; /* Wyœrodkowanie */
 }
 
-input:focus {
-    border-color: #5bc0de; /* Niebieski akcent po najechaniu */
-}
+    input:focus {
+        border-color: #5bc0de;
+    }
 
 /* Przycisk ogólny */
-button {
-    display: block; /* Przycisk w osobnej linii */
-    width: 90%; /* Pe³na szerokoœæ przycisku */
+.login-container button,
+.register-container button {
+    display: block;
+    width: 100%; /* Pe³na szerokoœæ */
     padding: 12px 20px;
     font-size: 16px;
     font-weight: bold;
@@ -58,21 +74,20 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-bottom: 10px; /* Odstêp miêdzy przyciskami */
-    margin: 0 auto;
+    margin: 10px auto; /* Wyœrodkowanie */
 }
 
-button:hover {
-    background-color: #5879cc;
-}
+    .login-container button:hover,
+    .register-container button:hover {
+        background-color: #5879cc;
+    }
 
 /* Przycisk Cancel */
-button.cancel-button {
-    background-color: #e0e0e0; /* Jasnoszary */
+.login-container .cancel-button {
+    background-color: #e0e0e0;
     color: #555;
-    width: 100%; /* Pe³na szerokoœæ przycisku */
-    margin-top: 10px; /* Odstêp od przycisku Login */
-    border: none;
+    width: 100%;
+    margin-top: 10px;
     padding: 12px 20px;
     font-size: 16px;
     border-radius: 5px;
@@ -80,9 +95,9 @@ button.cancel-button {
     transition: background-color 0.3s;
 }
 
-button.cancel-button:hover {
-    background-color: #c7c7c7; /* Ciemniejszy szary przy hover */
-}
+    .login-container .cancel-button:hover {
+        background-color: #c7c7c7;
+    }
 
 /* B³¹d formularza */
 .error-message {
@@ -96,7 +111,7 @@ button.cancel-button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* Odstêp miêdzy elementami */
+    gap: 20px;
 }
 
 .success-message {
@@ -106,7 +121,7 @@ button.cancel-button:hover {
 
 /* Kod QR */
 .qr-code {
-    max-width: 100%; /* Rozci¹ga obrazek do szerokoœci kontenera */
+    max-width: 100%;
     margin-top: 16px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -114,19 +129,21 @@ button.cancel-button:hover {
 
 /* Przycisk "Go to Login" */
 .go-to-login-btn {
-    background-color: #6c93ff; /* Niebieski jak w reszcie przycisków */
+    background-color: #6c93ff;
     color: #fff;
     border: none;
     padding: 12px 20px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    width: auto; /* Automatyczna szerokoœæ */
+    width: auto;
+    margin-top: 20px;
+    transition: background-color 0.3s;
 }
 
-.go-to-login-btn:hover {
-    background-color: #5879cc;
-}
+    .go-to-login-btn:hover {
+        background-color: #5879cc;
+    }
 
 /* Linki */
 p {
@@ -135,48 +152,12 @@ p {
     color: #555;
 }
 
-p a {
-    color: #5bc0de;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-p a:hover {
-    color: #31b0d5;
-}
-
-/* Przycisk "Go to Login" */
-.go-to-login-btn {
-    background-color: #6c93ff; /* Niebieski jak w reszcie przycisków */
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: auto; /* Automatyczna szerokoœæ */
-    margin-top: 20px; /* Odstêp od poprzednich elementów */
-    transition: background-color 0.3s;
-}
-
-    .go-to-login-btn:hover {
-        background-color: #5879cc; /* Ciemniejszy niebieski przy hover */
+    p a {
+        color: #5bc0de;
+        text-decoration: none;
+        transition: color 0.3s;
     }
 
-/* Przycisk Cancel w formularzu OTP */
-button.cancel-button {
-    background-color: #e0e0e0; /* Jasnoszary kolor przycisku Cancel */
-    color: #555; /* Ciemniejszy tekst */
-    width: auto; /* Automatyczna szerokoœæ */
-    margin-top: 10px; /* Odstêp od przycisku Akceptuj */
-    padding: 10px 20px; /* Mniejsze odstêpy */
-    font-size: 14px; /* Mniejszy rozmiar tekstu */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-    button.cancel-button:hover {
-        background-color: #c7c7c7; /* Ciemniejszy szary kolor przy hover */
-    }
+        p a:hover {
+            color: #31b0d5;
+        }

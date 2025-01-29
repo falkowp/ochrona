@@ -108,13 +108,14 @@
 button.user-profile-cancel-button {
     background-color: #e0e0e0;
     color: #555;
-    width: 100%;
-    padding: 12px 20px;
-    font-size: 16px;
+    width: 50%;
+    padding: 7px 20px;
+    font-size: 14px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-top: 10px; /* Odstêp od innych przycisków */
+    margin-top: 10px;
+    border: none;
 }
 
     button.user-profile-cancel-button:hover {

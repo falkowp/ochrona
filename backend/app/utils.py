@@ -3,9 +3,12 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 import pyotp
 from pydantic import BaseModel, Field
+import os
 
 # Limiter (ograniczenie prób logowania)
-limiter = Limiter(key_func=get_remote_address)
+limiter = Limiter(
+    key_func=get_remote_address,
+    storage_uri=os.getenv("RATELIMIT_STORAGE_URL", "redis://localhost:6379/0"))
 
 def validate_password(password):
     result = zxcvbn(password)

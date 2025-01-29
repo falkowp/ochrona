@@ -93,7 +93,7 @@ function Register() {
                         />
                     </div>
                     {error && <div className="error-message">{error}</div>}
-                    <button type="submit" className="register-btn">Register</button>
+                        <button type="submit" className="register-btn">Register</button>
                     <p>
                         Already have an account? <Link to="/login">Login here</Link>
                     </p>
