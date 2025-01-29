@@ -8,7 +8,7 @@ function AddMessage() {
     const [newMessage, setNewMessage] = useState("");
     const [author, setAuthor] = useState("");
     const navigate = useNavigate();
-    const MAX_CHAR_LIMIT = 200;
+    const MAX_CHAR_LIMIT = 400;
 
     useEffect(() => {
         const token = localStorage.getItem("jwtToken");

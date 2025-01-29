@@ -17,7 +17,6 @@ SECRET_KEY = "your_secret_key"
 main = Blueprint("main", __name__)
 
 
-# Middleware do wymaganego tokena JWT
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -42,51 +41,6 @@ def token_required(f):
 def test():
     return jsonify({"message": "works!"})
 
-# Rejestracja u¿ytkownika
-@main.route('/register', methods=['POST'])
-def register():
-    data = request.get_json()
-    try:
-        validated_data = UserRegistrationModel(**data)
-    except ValidationError as e:
-        return jsonify({"message": "Login or password does not meet requirements."}), 400
-
-    username = validated_data.username
-    password = validated_data.password
-
-    if not username or not password:
-        return jsonify({"message": "Username and password are required!"}), 400
-
-    # Sprawdzenie czy u¿ytkownik istnieje
-    if User.query.filter_by(username=username).first():
-        return jsonify({"message": "User already exists!"}), 400
-
-    # Walidacja has³a
-    if not validate_password(password):
-        return jsonify({"message": "Password is too weak!"}), 400
-
-    # Stworzenie nowego u¿ytkownika
-    new_user = User(username=username)
-    new_user.set_password(password)
-    new_user.generate_otp_secret()  # Generowanie sekretnika OTP
-    db.session.add(new_user)
-    db.session.commit()
-
-    # Generowanie kodu QR dla aplikacji uwierzytelniaj¹cej
-    totp = pyotp.TOTP(new_user.otp_secret)
-    otp_url = totp.provisioning_uri(username, issuer_name="TrelkaczApp")
-    qr = qrcode.make(otp_url)
-
-    buffer = io.BytesIO()
-    qr.save(buffer, format="PNG")
-    buffer.seek(0)
-
-    return send_file(buffer, mimetype="image/png",
-                     as_attachment=False,
-                     download_name="otp_qr.png")
-
-
-# Logowanie u¿ytkownika
 @main.route('/login_step1', methods=['POST'])
 @limiter.limit("5 per minute")
 def login_step1():
@@ -129,28 +83,24 @@ def login_step2():
     return jsonify({"token": token}), 200
 
 @main.route('/change_password', methods=['POST'])
-@token_required  # Wymaga tokena JWT
+@token_required  
 def change_password(decoded):
     data = request.get_json()
     current_password = data.get('current_password')
     otp = data.get('otp')
     new_password = data.get('new_password')
 
-    # Pobierz u¿ytkownika z bazy na podstawie tokena JWT
     user = User.query.filter_by(id=decoded["user_id"]).first()
 
     if not user:
         return jsonify({"message": "User not found."}), 404
 
-    # Weryfikacja starego has³a
     if not user.verify_password(current_password):
         return jsonify({"message": "Incorrect current password."}), 400
 
-    # Weryfikacja OTP
     if not verify_otp(user.otp_secret, otp):
         return jsonify({"message": "Invalid OTP."}), 400
 
-    # Walidacja nowego has³a
     password_issues = []
     if len(new_password) < 8:
         password_issues.append("Password must be at least 8 characters long.")
@@ -164,16 +114,11 @@ def change_password(decoded):
     if password_issues:
         return jsonify({"message": "New password does not meet security requirements.", "issues": password_issues}), 400
 
-    # Zmieñ has³o u¿ytkownika
     user.set_password(new_password)
     db.session.commit()
 
     return jsonify({"message": "Password changed successfully."}), 200
 
-
-
-
-# Pobieranie wiadomoœci
 @main.route('/messages', methods=['GET'])
 @token_required
 def get_messages(decoded):
@@ -194,7 +139,6 @@ def get_messages(decoded):
 def sanitize_input(data):
     return bleach.clean(data)
 
-# Zastosowanie przy tworzeniu wiadomoœci:
 @main.route('/messages', methods=['POST'])
 @token_required
 def create_message(decoded):
@@ -211,38 +155,28 @@ def create_message(decoded):
     db.session.commit()
     return jsonify({"message": "Message created successfully!"}), 201
 
-
-
-# Edycja wiadomoœci
 @main.route('/messages/<int:message_id>', methods=['PUT'])
 @token_required
 def update_message(decoded, message_id):
-    import bleach  # Importujemy w razie braku wczeœniejszego
     data = request.get_json()
     new_content = data.get('message')
 
     if not new_content:
         return jsonify({"message": "New message content is required!"}), 400
 
-    # Pobieramy wiadomoœæ przypisan¹ do u¿ytkownika
     message = Message.query.filter_by(id=message_id, author=decoded['username']).first()
 
     if not message:
         return jsonify({"message": "Message not found or not authorized!"}), 404
 
-    # Sanitization of new content
     sanitized_content = bleach.clean(new_content)
 
-    # Aktualizacja treœci wiadomoœci
     message.message = sanitized_content
     message.updated_at = datetime.datetime.utcnow()
     db.session.commit()
 
     return jsonify({"message": "Message updated successfully!"}), 200
 
-
-
-# Usuwanie wiadomoœci
 @main.route('/messages/<int:message_id>', methods=['DELETE'])
 @token_required
 def delete_message(decoded, message_id):

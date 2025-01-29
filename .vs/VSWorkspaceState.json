@@ -3,10 +3,13 @@
     "",
     "\\backend",
     "\\backend\\app",
+    "\\backend\\instance",
+    "\\frontend",
+    "\\frontend\\src",
     "\\frontend\\src\\components",
     "\\frontend\\src\\pages",
     "\\frontend\\src\\styles"
   ],
-  "SelectedNode": "\\backend\\app\\utils.py",
+  "SelectedNode": "\\frontend\\src\\components\\RichTextEditor.js",
   "PreviewInSolutionExplorer": false
 }

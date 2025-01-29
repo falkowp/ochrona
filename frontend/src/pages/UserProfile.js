@@ -5,7 +5,7 @@ import "../styles/Profile.css";
 function UserProfile() {
     const [username, setUsername] = useState("");
     const [messageCount, setMessageCount] = useState(0);
-    const [view, setView] = useState("profile"); // 'profile', 'changePassword', 'otpVerification'
+    const [view, setView] = useState("profile"); 
 
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -18,7 +18,6 @@ function UserProfile() {
 
     const token = localStorage.getItem("jwtToken");
 
-    // Pobranie danych u¿ytkownika
     useEffect(() => {
         if (!token) {
             navigate("/login");
@@ -45,7 +44,6 @@ function UserProfile() {
         }
     }, [token, navigate]);
 
-    // Obs³uga zmiany has³a (krok 1)
     const handleChangePasswordStep1 = (e) => {
         e.preventDefault();
 
@@ -58,7 +56,6 @@ function UserProfile() {
         setError("");
     };
 
-    // Obs³uga weryfikacji OTP i zmiany has³a (krok 2)
     const handleChangePasswordStep2 = (e) => {
         e.preventDefault();
 
@@ -93,7 +90,6 @@ function UserProfile() {
             });
     };
 
-    // Anulowanie i powrót do widoku profilu
     const handleCancel = () => {
         setView("profile");
         setOldPassword("");

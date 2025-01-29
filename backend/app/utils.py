@@ -5,14 +5,13 @@ import pyotp
 from pydantic import BaseModel, Field
 import os
 
-# Limiter (ograniczenie prób logowania)
 limiter = Limiter(
     key_func=get_remote_address,
     storage_uri=os.getenv("RATELIMIT_STORAGE_URL", "redis://localhost:6379/0"))
 
 def validate_password(password):
     result = zxcvbn(password)
-    return result['score'] >= 3  # Wymagana si³a has³a
+    return result['score'] >= 3  
 
 def generate_otp_secret():
     return pyotp.random_base32()

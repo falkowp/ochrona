@@ -15,7 +15,6 @@ function Dashboard() {
     const navigate = useNavigate();
     const token = localStorage.getItem("jwtToken");
 
-    // Pobranie nazwy u¿ytkownika z tokena JWT
     useEffect(() => {
         if (!token) {
             navigate("/login");
@@ -23,7 +22,7 @@ function Dashboard() {
         }
 
         try {
-            const payload = JSON.parse(atob(token.split(".")[1])); // Rozdzielamy token na czêœci i dekodujemy Base64
+            const payload = JSON.parse(atob(token.split(".")[1])); 
             setUsername(payload.username);
         } catch (error) {
             console.error("Invalid token:", error);
@@ -31,7 +30,6 @@ function Dashboard() {
         }
     }, [navigate, token]);
 
-    // Funkcja pobieraj¹ca wiadomoœci z API
     const fetchMessages = useCallback(() => {
         if (!token) return;
 
@@ -45,20 +43,17 @@ function Dashboard() {
                 setMessages(data.messages || []);
             })
             .catch((error) => console.error("Error fetching messages:", error));
-    }, [token]); // Tylko token jest zale¿noœci¹
+    }, [token]); 
 
-    // Pobranie wiadomoœci przy za³adowaniu komponentu
     useEffect(() => {
         fetchMessages();
-    }, [fetchMessages]); // Odœwie¿aj, kiedy fetchMessages siê zmieni
+    }, [fetchMessages]); 
 
-    // Wylogowanie u¿ytkownika
     const handleLogout = () => {
         localStorage.removeItem("jwtToken");
         navigate("/login");
     };
 
-    // Edycja wiadomoœci
     const editMessage = (id, newMessage) => {
         fetch(`/api/messages/${id}`, {
             method: "PUT",
@@ -75,12 +70,11 @@ function Dashboard() {
                 return response.json();
             })
             .then(() => {
-                fetchMessages(); // Odœwie¿enie wiadomoœci po udanej edycji
+                fetchMessages(); 
             })
             .catch((error) => console.error("Error updating message:", error));
     };
 
-    // Usuniêcie wiadomoœci
     const deleteMessage = (id) => {
         fetch(`/api/messages/${id}`, {
             method: "DELETE",
@@ -92,12 +86,11 @@ function Dashboard() {
                 if (!response.ok) {
                     throw new Error("Failed to delete the message.");
                 }
-                fetchMessages(); // Odœwie¿enie wiadomoœci po usuniêciu
+                fetchMessages(); 
             })
             .catch((error) => console.error("Error deleting message:", error));
     };
 
-    // Otwieranie modala do edycji
     const handleEdit = (id, message) => {
         setCurrentMessage(message);
         setCurrentMessageId(id);
@@ -111,7 +104,7 @@ function Dashboard() {
                 currentMessage={currentMessage}
                 onSave={(newMessage) => {
                     editMessage(currentMessageId, newMessage);
-                    setIsEditModalOpen(false); // Zamkniêcie modala po zapisaniu
+                    setIsEditModalOpen(false); 
                 }}
                 onClose={() => setIsEditModalOpen(false)}
             />

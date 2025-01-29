@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../styles/Auth.css";
 
 function Login() {
-    const [step, setStep] = useState(1); // 1: Login i has?o, 2: OTP
+    const [step, setStep] = useState(1); 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [otp, setOtp] = useState("");
@@ -38,7 +38,7 @@ function Login() {
                 setError(data.message || "Invalid credentials!");
             } else {
                 setError("");
-                setStep(2); // Przejd? do kroku 2
+                setStep(2); 
             }
         } catch (error) {
             setError("Failed to connect to the server.");

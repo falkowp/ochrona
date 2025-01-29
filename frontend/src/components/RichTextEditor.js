@@ -1,9 +1,12 @@
-import React, { useRef } from "react";
-import { FaBold, FaItalic, FaImage} from "react-icons/fa";
+import React, { useRef, useState } from "react";
+import { FaBold, FaItalic, FaImage } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
 
 function RichTextEditor({ value, onChange, maxCharLimit }) {
     const textareaRef = useRef(null);
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [imageUrl, setImageUrl] = useState("");
+    const [altText, setAltText] = useState("");
 
     const addFormatting = (syntax, placeholder = "") => {
         const textarea = textareaRef.current;
@@ -26,13 +29,17 @@ function RichTextEditor({ value, onChange, maxCharLimit }) {
         }
     };
 
-    const insertLinkOrImage = (type) => {
-        const url = prompt(`Enter ${type} URL:`);
-        if (url) {
-            const syntax = type === "image" ? `![Alt text](${url})` : `[Link text](${url})`;
+    const handleInsertImage = () => {
+        setModalOpen(true); // Otwórz modal
+    };
+
+    const handleImageSubmit = () => {
+        if (imageUrl) {
+            const syntax = `![${altText || "Alt text"}](${imageUrl})`;
             const newText = `${value}${syntax}`;
             if (newText.length <= maxCharLimit) {
                 onChange(newText);
+                setModalOpen(false); // Zamknij modal po dodaniu obrazu
             }
         }
     };
@@ -46,7 +53,7 @@ function RichTextEditor({ value, onChange, maxCharLimit }) {
                 <button type="button" onClick={() => addFormatting("_")} className="toolbar-button">
                     <FaItalic title="Italic" />
                 </button>
-                <button type="button" onClick={() => insertLinkOrImage("image")} className="toolbar-button">
+                <button type="button" onClick={handleInsertImage} className="toolbar-button">
                     <FaImage title="Insert Image" />
                 </button>
             </div>
@@ -67,6 +74,35 @@ function RichTextEditor({ value, onChange, maxCharLimit }) {
                     <ReactMarkdown>{value}</ReactMarkdown>
                 </div>
             </div>
+
+            {/* Modal */}
+            {isModalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <h3>Insert Image</h3>
+                        <label>
+                            Image URL:
+                            <input
+                                type="url"
+                                value={imageUrl}
+                                onChange={(e) => setImageUrl(e.target.value)}
+                                placeholder="https://example.com/image.jpg"
+                            />
+                        </label>
+                        <label>
+                            Alt Text:
+                            <input
+                                type="text"
+                                value={altText}
+                                onChange={(e) => setAltText(e.target.value)}
+                                placeholder="Optional alt text"
+                            />
+                        </label>
+                        <button onClick={handleImageSubmit}>Insert Image</button>
+                        <button onClick={() => setModalOpen(false)}>Cancel</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

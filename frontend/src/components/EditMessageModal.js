@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import RichTextEditor from "../components/RichTextEditor";
-import "../styles/AddMessage.css"; // U¿ywamy tych samych stylów
+import "../styles/AddMessage.css"; 
 
 function EditMessageModal({ isOpen, currentMessage, onSave, onClose }) {
     const [newMessage, setNewMessage] = useState("");
-    const MAX_CHAR_LIMIT = 200;
+    const MAX_CHAR_LIMIT = 400;
 
     useEffect(() => {
         if (currentMessage) {
