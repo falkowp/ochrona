@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import ReactMarkdown from "react-markdown";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Dashboard.css";
-import EditMessageModal from "./EditMessageModal";
+import EditMessageModal from "../components/EditMessageModal";
 import "../styles/App.css";
 
 function Dashboard() {

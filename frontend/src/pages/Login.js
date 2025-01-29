@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../styles/Login.css";
+import "../styles/Auth.css";
 
 function Login() {
     const [step, setStep] = useState(1); // 1: Login i has³o, 2: OTP

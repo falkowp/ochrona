@@ -7,7 +7,7 @@
     align-items: center;
     min-height: 100vh;
     background-color: #f9f9f9;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
 /* Formularz */
@@ -17,35 +17,63 @@
     border-radius: 10px;
     padding: 20px;
     width: 100%;
-    max-width: 500px;
+    max-width: 450px; /* Zmniejszamy szerokoœæ formularza */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-    /* Etykiety */
-    .add-message-form label {
-        font-size: 16px;
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 10px;
-        display: block;
+    .add-message-form .toolbar {
+        display: flex; /* Ustawiamy przyciski w jednej linii */
+        flex-wrap: wrap; /* Dziêki temu przyciski zawin¹ siê, jeœli bêdzie ich zbyt du¿o */
+        justify-content: start; /* Przyciski bêd¹ wyrównane do lewej */
+        gap: 3px; /* Odstêp pomiêdzy przyciskami */
     }
+
+        /* Przyciski nad polem tekstowym */
+        .add-message-form .toolbar button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: #6c757d; /* Szaro-niebieski kolor */
+            color: #fff;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 10px; /* Dodajemy odstêp poni¿ej przycisków */
+        }
+
+            /* Kolor przycisku przy najechaniu i klikniêciu */
+            .add-message-form .toolbar button:hover {
+                background-color: #5a6268; /* Zmiana koloru na ciemniejszy */
+            }
+
+            .add-message-form .toolbar button:active {
+                background-color: #4e555b; /* Aktywny stan */
+            }
 
     /* Pole tekstowe */
     .add-message-form textarea {
-        width: 90%;
-        height: 150px; 
-        padding: 10px;
+        width: 90%; /* Zmieniamy na 90% szerokoœci formularza */
+        height: 120px;
+        padding: 12px;
         font-size: 14px;
         border: 1px solid #ccc;
         border-radius: 5px;
         resize: none;
         box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
         transition: border-color 0.3s;
+        margin: 0 auto; /* Wyœrodkowanie */
+        display: block; /* Zapewniamy, ¿e textarea bêdzie blokowym elementem */
     }
 
+        /* Stylizacja textarea na focus */
         .add-message-form textarea:focus {
             outline: none;
-            border-color: #007bff;
+            border-color: #5bc0de; /* U¿ywamy koloru spójnego z przyciskami */
         }
 
 /* Licznik znaków */
@@ -60,7 +88,7 @@
         color: #d9534f;
     }
 
-/* Przycisk */
+/* Przycisk "Add Message" */
 .add-message-form button {
     display: block;
     width: 100%;
@@ -76,6 +104,7 @@
     transition: background-color 0.3s;
 }
 
+    /* Kolory przycisku po najechaniu i klikniêciu */
     .add-message-form button:hover {
         background-color: #0056b3;
     }
@@ -83,3 +112,37 @@
     .add-message-form button:active {
         background-color: #003f7f;
     }
+
+/* Czerwony przycisk "Cancel" */
+.cancel-button {
+    display: inline-block;
+    width: auto;
+    background-color: #d9534f;
+    color: #fff;
+    font-size: 16px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+    /* Kolory przycisku Cancel po najechaniu i klikniêciu */
+    .cancel-button:hover {
+        background-color: #c9302c;
+    }
+
+    .cancel-button:active {
+        background-color: #ac2925;
+    }
+
+/* Stylizacja obrazków w podgl¹dzie */
+.markdown-preview img {
+    max-width: 150px; /* Maksymalna szerokoœæ obrazka w podgl¹dzie */
+    height: auto; /* Zachowanie proporcji */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lekki cieñ dla lepszego wygl¹du */
+    object-fit: contain; /* Upewniamy siê, ¿e obrazek mieœci siê w przypisanej wielkoœci */
+}

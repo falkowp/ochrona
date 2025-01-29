@@ -40,25 +40,25 @@ function RichTextEditor({ value, onChange, maxCharLimit }) {
     return (
         <div className="editor-container">
             <div className="toolbar">
-                <button type="button" onClick={() => addFormatting("**")}>
+                <button type="button" onClick={() => addFormatting("**")} className="toolbar-button">
                     <FaBold title="Bold" />
                 </button>
-                <button type="button" onClick={() => addFormatting("_")}>
+                <button type="button" onClick={() => addFormatting("_")} className="toolbar-button">
                     <FaItalic title="Italic" />
                 </button>
-                <button type="button" onClick={() => addFormatting("`")}>
+                <button type="button" onClick={() => addFormatting("`")} className="toolbar-button">
                     <FaCode title="Inline Code" />
                 </button>
-                <button type="button" onClick={() => addFormatting("\n> ", "Quote")}>
+                <button type="button" onClick={() => addFormatting("\n> ", "Quote")} className="toolbar-button">
                     <FaQuoteRight title="Blockquote" />
                 </button>
-                <button type="button" onClick={() => addFormatting("\n- ", "List item")}>
+                <button type="button" onClick={() => addFormatting("\n- ", "List item")} className="toolbar-button">
                     <FaListUl title="Unordered List" />
                 </button>
-                <button type="button" onClick={() => addFormatting("\n1. ", "List item")}>
+                <button type="button" onClick={() => addFormatting("\n1. ", "List item")} className="toolbar-button">
                     <FaListOl title="Ordered List" />
                 </button>
-                <button type="button" onClick={() => insertLinkOrImage("image")}>
+                <button type="button" onClick={() => insertLinkOrImage("image")} className="toolbar-button">
                     <FaImage title="Insert Image" />
                 </button>
             </div>

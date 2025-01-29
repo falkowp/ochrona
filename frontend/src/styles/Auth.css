@@ -1,0 +1,182 @@
+/* Ogólne stylowanie */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Jasnoszare t³o */
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin: 20px 0; /* Odstêp od góry */
+}
+
+/* Formularze */
+form {
+    max-width: 400px;
+    margin: 20px auto; /* Wyœrodkowanie formularza */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lekki cieñ */
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555; /* Ciemniejszy tekst */
+}
+
+input {
+    width: 90%; /* Rozci¹ga pole na pe³n¹ szerokoœæ formularza */
+    padding: 10px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #5bc0de; /* Niebieski akcent po najechaniu */
+}
+
+/* Przycisk ogólny */
+button {
+    display: block; /* Przycisk w osobnej linii */
+    width: 90%; /* Pe³na szerokoœæ przycisku */
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #6c93ff; /* Delikatny niebieski */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px; /* Odstêp miêdzy przyciskami */
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #5879cc;
+}
+
+/* Przycisk Cancel */
+button.cancel-button {
+    background-color: #e0e0e0; /* Jasnoszary */
+    color: #555;
+    width: 100%; /* Pe³na szerokoœæ przycisku */
+    margin-top: 10px; /* Odstêp od przycisku Login */
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.cancel-button:hover {
+    background-color: #c7c7c7; /* Ciemniejszy szary przy hover */
+}
+
+/* B³¹d formularza */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+/* Sukces */
+.success-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Odstêp miêdzy elementami */
+}
+
+.success-message {
+    color: green;
+    font-size: 16px;
+}
+
+/* Kod QR */
+.qr-code {
+    max-width: 100%; /* Rozci¹ga obrazek do szerokoœci kontenera */
+    margin-top: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Przycisk "Go to Login" */
+.go-to-login-btn {
+    background-color: #6c93ff; /* Niebieski jak w reszcie przycisków */
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto; /* Automatyczna szerokoœæ */
+}
+
+.go-to-login-btn:hover {
+    background-color: #5879cc;
+}
+
+/* Linki */
+p {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
+p a {
+    color: #5bc0de;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+p a:hover {
+    color: #31b0d5;
+}
+
+/* Przycisk "Go to Login" */
+.go-to-login-btn {
+    background-color: #6c93ff; /* Niebieski jak w reszcie przycisków */
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto; /* Automatyczna szerokoœæ */
+    margin-top: 20px; /* Odstêp od poprzednich elementów */
+    transition: background-color 0.3s;
+}
+
+    .go-to-login-btn:hover {
+        background-color: #5879cc; /* Ciemniejszy niebieski przy hover */
+    }
+
+/* Przycisk Cancel w formularzu OTP */
+button.cancel-button {
+    background-color: #e0e0e0; /* Jasnoszary kolor przycisku Cancel */
+    color: #555; /* Ciemniejszy tekst */
+    width: auto; /* Automatyczna szerokoœæ */
+    margin-top: 10px; /* Odstêp od przycisku Akceptuj */
+    padding: 10px 20px; /* Mniejsze odstêpy */
+    font-size: 14px; /* Mniejszy rozmiar tekstu */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    button.cancel-button:hover {
+        background-color: #c7c7c7; /* Ciemniejszy szary kolor przy hover */
+    }

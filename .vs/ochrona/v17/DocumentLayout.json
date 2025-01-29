@@ -1,12 +1,70 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\UserProfile.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\pages\\UserProfile.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\Register.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\pages\\Register.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\Login.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\pages\\Login.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Register.js",
+              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\Register.js",
+              "RelativeDocumentMoniker": "frontend\\src\\pages\\Register.js",
+              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\Register.js",
+              "RelativeToolTip": "frontend\\src\\pages\\Register.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-01-29T00:23:19.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.js",
+              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\Login.js",
+              "RelativeDocumentMoniker": "frontend\\src\\pages\\Login.js",
+              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\Login.js",
+              "RelativeToolTip": "frontend\\src\\pages\\Login.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-01-29T00:23:17.518Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserProfile.js",
+              "DocumentMoniker": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\UserProfile.js",
+              "RelativeDocumentMoniker": "frontend\\src\\pages\\UserProfile.js",
+              "ToolTip": "C:\\Users\\patry\\Desktop\\pw\\ochrona\\frontend\\src\\pages\\UserProfile.js",
+              "RelativeToolTip": "frontend\\src\\pages\\UserProfile.js",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-01-29T00:23:13.296Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
