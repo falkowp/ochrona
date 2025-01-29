@@ -49,7 +49,7 @@ function Login() {
         e.preventDefault();
 
         if (!otp) {
-            setError("OTP is required!");
+            setError("Authorization key required!");
             return;
         }
 
@@ -63,7 +63,7 @@ function Login() {
             const data = await response.json();
 
             if (!response.ok) {
-                setError(data.message || "Invalid OTP!");
+                setError(data.message || "Invalid authorization key!");
             } else {
                 localStorage.setItem("jwtToken", data.token);
                 setError("");
@@ -114,7 +114,7 @@ function Login() {
             {step === 2 && (
                 <form onSubmit={handleOtpSubmit}>
                     <div>
-                        <label htmlFor="otp">OTP:</label>
+                        <label htmlFor="otp">Authorization key:</label>
                         <input
                             type="text"
                             id="otp"

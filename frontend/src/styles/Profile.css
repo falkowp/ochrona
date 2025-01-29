@@ -1,0 +1,122 @@
+/* Stylowanie kontenera profilu u¿ytkownika */
+.user-profile-container {
+    width: 90%; /* Ustala szerokoœæ kontenera na 90% szerokoœci ekranu */
+    max-width: 500px; /* Maksymalna szerokoœæ kontenera */
+    margin: 0 auto; /* Wyœrodkowanie kontenera */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lekki cieñ wokó³ kontenera */
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+/* Nag³ówek w profilu u¿ytkownika */
+.user-profile-container__header {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Sekcja wyœwietlaj¹ca dane u¿ytkownika */
+.user-profile-container__data {
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #555;
+}
+
+/* Przycisk do zmiany has³a w profilu u¿ytkownika */
+.user-profile-container__button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #6c93ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px; /* Odstêp miêdzy elementami */
+}
+
+    .user-profile-container__button:hover {
+        background-color: #5879cc;
+    }
+
+/* Formatywanie sekcji zmiany has³a */
+.user-profile-change-password-form,
+.user-profile-otp-verification-form {
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.user-profile-change-password-form__header,
+.user-profile-otp-verification-form__header {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Formatywanie sekcji zmiany has³a - etapy formularza */
+.user-profile-change-password-form__label,
+.user-profile-otp-verification-form__label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.user-profile-change-password-form__input,
+.user-profile-otp-verification-form__input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+    .user-profile-change-password-form__input:focus,
+    .user-profile-otp-verification-form__input:focus {
+        border-color: #5bc0de; /* Niebieski akcent przy fokosie */
+    }
+
+/* Komunikaty o b³êdach i sukcesach */
+.user-profile-error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.user-profile-success-message {
+    color: green;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Przycisk "Cancel" w formularzach */
+button.user-profile-cancel-button {
+    background-color: #e0e0e0;
+    color: #555;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px; /* Odstêp od innych przycisków */
+}
+
+    button.user-profile-cancel-button:hover {
+        background-color: #c7c7c7;
+    }

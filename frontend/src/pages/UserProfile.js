@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/Profile.css";
 
 function UserProfile() {
     const [username, setUsername] = useState("");
@@ -107,68 +108,72 @@ function UserProfile() {
         <div className="user-profile-container">
             {view === "profile" && (
                 <>
-                    <h1>User Profile</h1>
-                    <p><strong>Username:</strong> {username}</p>
-                    <p><strong>Currently published messages:</strong> {messageCount}</p>
-                    <button onClick={() => setView("changePassword")}>Change Password</button>
-                    {success && <p className="success-message">{success}</p>}
+                    <h1 className="user-profile-container__header">User Profile</h1>
+                    <p className="user-profile-container__data"><strong>Username:</strong> {username}</p>
+                    <p className="user-profile-container__data"><strong>Currently published messages:</strong> {messageCount}</p>
+                    <button className="user-profile-container__button" onClick={() => setView("changePassword")}>Change Password</button>
+                    {success && <p className="user-profile-success-message">{success}</p>}
                 </>
             )}
 
             {view === "changePassword" && (
-                <form onSubmit={handleChangePasswordStep1} className="change-password-form">
-                    <h2>Change Password</h2>
-                    <label>
+                <form onSubmit={handleChangePasswordStep1} className="user-profile-change-password-form">
+                    <h2 className="user-profile-change-password-form__header">Change Password</h2>
+                    <label className="user-profile-change-password-form__label">
                         Old Password:
                         <input
                             type="password"
                             value={oldPassword}
                             onChange={(e) => setOldPassword(e.target.value)}
+                            className="user-profile-change-password-form__input"
                             required
                         />
                     </label>
-                    <label>
+                    <label className="user-profile-change-password-form__label">
                         New Password:
                         <input
                             type="password"
                             value={newPassword}
                             onChange={(e) => setNewPassword(e.target.value)}
+                            className="user-profile-change-password-form__input"
                             required
                         />
                     </label>
-                    <label>
+                    <label className="user-profile-change-password-form__label">
                         Confirm New Password:
                         <input
                             type="password"
                             value={confirmNewPassword}
                             onChange={(e) => setConfirmNewPassword(e.target.value)}
+                            className="user-profile-change-password-form__input"
                             required
                         />
                     </label>
-                    {error && <p className="error-message">{error}</p>}
+                    {error && <p className="user-profile-error-message">{error}</p>}
                     <div>
-                        <button type="submit">Next</button>
-                        <button type="button" onClick={handleCancel}>Cancel</button>
+                        <button type="submit" className="user-profile-container__button">Next</button>
+                        <button type="button" onClick={handleCancel} className="user-profile-cancel-button">Cancel</button>
                     </div>
                 </form>
             )}
 
             {view === "otpVerification" && (
-                <form onSubmit={handleChangePasswordStep2} className="otp-verification-form">
-                    <h2>OTP Verification</h2>
-                    <label>
-                        Enter OTP:
+                <form onSubmit={handleChangePasswordStep2} className="user-profile-otp-verification-form">
+                    <h2 className="user-profile-otp-verification-form__header">Verification</h2>
+                    <label className="user-profile-otp-verification-form__label">
+                        Enter authorization key:
                         <input
                             type="text"
                             value={otp}
                             onChange={(e) => setOtp(e.target.value)}
+                            className="user-profile-otp-verification-form__input"
                             required
                         />
                     </label>
-                    {error && <p className="error-message">{error}</p>}
+                    {error && <p className="user-profile-error-message">{error}</p>}
                     <div>
-                        <button type="submit">Submit</button>
-                        <button type="button" onClick={handleCancel}>Cancel</button>
+                        <button type="submit" className="user-profile-container__button">Submit</button>
+                        <button type="button" onClick={handleCancel} className="user-profile-cancel-button">Cancel</button>
                     </div>
                 </form>
             )}
